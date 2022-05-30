@@ -5,8 +5,6 @@ import com.company.devices.Phone;
 
 import java.util.*;
 
-import static com.company.Country.*;
-
 public class Main {
 
     public static void main(String[] args) {
@@ -19,17 +17,11 @@ public class Main {
 
         //task 3
         System.out.println("-------Task 3-------");
-        System.out.println(POLAND.getGDPinPLN()+ "M");
+        System.out.println(Country.POLAND.getGDPinPLN()+ "M");
 
         // task 4
         System.out.println("-------Task 4-------");
-        Map<Country, Double> countryMap = new HashMap<>();
-
-        countryMap.put(POLAND,58500000.0);
-        countryMap.put(NORWAY,5367580.0);
-        countryMap.put(CANADA,31612895.0);
-        countryMap.put(GERMANY,83019200.0);
-        countryMap.put(ITALY,60483973.0);
+        Map<Country, Double> countryMap = Country.getMap();
 
         Double maxValue = Collections.max(countryMap.values());
         for (Map.Entry<Country, Double> entry : countryMap.entrySet()) {
@@ -47,45 +39,48 @@ public class Main {
 
         //task 5
         System.out.println("-------Task 5-------");
-        Map<String,Country> mapCountries = new HashMap<>();
-        mapCountries.put("Warsaw",POLAND);
-        mapCountries.put("Oslo",NORWAY);
-        mapCountries.put("Roma",ITALY);
-        mapCountries.put("Ottawa",CANADA);
-        mapCountries.put("Berlin",GERMANY);
-
+        Map<String,Country> mapCountries = Country.getCapitals();
         System.out.println("Not sorted: "+ mapCountries.keySet());
 
         Map<String,Country> sortedMap = new TreeMap<>(mapCountries);
-
         System.out.println("Sorted: "+sortedMap.keySet());
 
         //task 6
 
-        System.out.println("-------Task 6-------");
+        Animal myDog = new Pets("dog", FoodType.MEAT, 9.5);
+        Animal myCat = new Pets("cat", FoodType.MEAT, 5.5);
+        Animal nik = new Human(2000.0);
+        Animal bella = new Human(2000.0);
+        Animal cow = new FarmAnimals("cow", FoodType.CROPS, 115.6);
+        Animal lamb = new FarmAnimals("lamb", FoodType.CROPS, 60.7);
 
-        Car mustang = new Car("Ford","Mustang");
-        Car fiesta = new Car("Ford","Fiesta");
-        Phone siemensPhone1 = new Phone("Siemens","a57",9.0,OperatingSystem.Android);
-        Phone siemensPhone2 = new Phone("Siemens","fridge-55",8.2,OperatingSystem.Android);
+        List<Animal> petsList = new ArrayList<>();
+        petsList.add(myDog);
+        petsList.add(myCat);
 
-        List<Device> devicesFord = new ArrayList<>();
-        devicesFord.add(mustang);
-        devicesFord.add(fiesta);
+        List<Animal> humanList = new ArrayList<>();
+        humanList.add(nik);
+        humanList.add(bella);
 
+        List<Animal> farmAnimalList = new ArrayList<>();
+        farmAnimalList.add(cow);
+        farmAnimalList.add(lamb);
 
-        List<Device> devicesSiemens = new ArrayList<>();
-        devicesSiemens.add(siemensPhone1);
-        devicesSiemens.add(siemensPhone2);
+        Map<FoodType, List<Animal>> animalMap = new HashMap<>();
+        animalMap.put(FoodType.MEAT, petsList);
+        animalMap.put(FoodType.ALL, humanList);
+        animalMap.put(FoodType.CROPS, farmAnimalList);
 
-        Map<String,List> devicesMap = new HashMap<>();
-        devicesMap.put("Siemens",devicesSiemens);
-        devicesMap.put("Ford",devicesFord);
+        System.out.println(animalMap.get(FoodType.CROPS));
+        System.out.println(animalMap.get(FoodType.ALL));
+        System.out.println(animalMap.get(FoodType.MEAT));
 
-        System.out.println(devicesMap.get("Siemens"));
-        System.out.println(devicesMap.get("Ford"));
+        // task 7
+        System.out.println("**************Task7*************");
+        Car ferrari = new Car("Ferrari", "458");
+        ferrari.startACar();
 
-        //task 8, 11
+        //task 8, 11: combined in a single task
 
         System.out.println("-------Task 8 and Task 11-------");
 
@@ -107,3 +102,4 @@ public class Main {
 
     }
 }
+

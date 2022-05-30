@@ -1,3 +1,5 @@
+import java.util.HashMap;
+
 public enum Country {
     POLAND("Polish","POL",594.0),
     NORWAY("Norwegian","NOR",362.0),
@@ -19,4 +21,23 @@ public enum Country {
         return this.GDP = this.GDP*4;
     }
 
+    public static HashMap <Country, Double> getMap() {
+        HashMap <Country, Double> map = new HashMap<>();
+        map.put(POLAND, 37.95);
+        map.put(NORWAY, 5.37);
+        map.put(CANADA, 38.01);
+        map.put(ITALY, 59.55);
+        map.put(GERMANY, 83.24);
+        return map;
+    }
+
+    public static HashMap <String, Country> getCapitals() {
+        HashMap <String, Country> map = new HashMap<>();
+        map.put("Warsaw", POLAND);
+        map.put("Oslo", NORWAY);
+        map.put("Ottawa", CANADA);
+        map.put("Rome", ITALY);
+        map.put("Berlin", GERMANY);
+        return map;
+    }
 }

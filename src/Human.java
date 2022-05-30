@@ -1,5 +1,8 @@
 import com.company.devices.Phone;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Human extends Animal {
     String firstName;
     String lastName;
@@ -33,4 +36,13 @@ public class Human extends Animal {
         }
     }
 
+    public static List<Human> getHumans() {
+        List<Human> humans = new ArrayList<>();
+        Human john = new Human(4000.0);
+        Human bill = new Human(5000.0);
+
+        humans.add(john);
+        humans.add(bill);
+        return humans;
+    }
 }
