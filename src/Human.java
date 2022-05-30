@@ -1,6 +1,7 @@
-package com.company;
-
 import com.company.devices.Phone;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Human extends Animal {
     String firstName;
@@ -9,11 +10,12 @@ public class Human extends Animal {
     Phone phone;
 
     public final static String HUMAN_SPECIE = "homo sapiens";
-
+    public final static FoodType HUMAN_FOODTYPE = FoodType.ALL;
+    public final static Double HUMAN_WEIGHT = 80.0;
     private Double salary;
 
     Human(Double salary) {
-        super(HUMAN_SPECIE);
+        super(HUMAN_SPECIE, HUMAN_FOODTYPE,HUMAN_WEIGHT);
         this.setSalary(salary);
     }
 
@@ -34,4 +36,13 @@ public class Human extends Animal {
         }
     }
 
+    public static List<Human> getHumans() {
+        List<Human> humans = new ArrayList<>();
+        Human john = new Human(4000.0);
+        Human bill = new Human(5000.0);
+
+        humans.add(john);
+        humans.add(bill);
+        return humans;
+    }
 }
